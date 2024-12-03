@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <unistd.h>
 
 #define handle_error(msg) \
 	do { perror(msg); exit(EXIT_FAILURE); } while (0)
@@ -39,6 +40,12 @@ int main() {
 		handle_error("accept");
 	}
 
+	//send messages
+
+	result = close(sfd);
+	if (result == -1) {
+		handle_error("close");
+	}
 
 	return 0;
 }
